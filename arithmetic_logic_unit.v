@@ -142,44 +142,7 @@ module arithmetic_logic_unit
 					overflow 	= 0;
 					zero		= (result == 0) ? 1 : 0;
 				end
-			4'b1010: // shift right arithmetic
-				begin
-					result 		= operand0 >>> operand1;
-					overflow 	= 0;
-					zero		= (result == 0) ? 1 : 0;
-				end
-			4'b1011: // Signed add
-				begin
-					result 		= operand0 + operand1;
 					
-					// See page 226 in Computer Organization and Design
-					if ((operand0 >= 0 && operand1 >= 0 && result < 0) ||
-						(operand0 < 0 && operand1 < 0 && result >= 0)) begin
-						overflow = 1;
-					end else begin
-						overflow = 0;
-					end
-					
-					zero		= (result == 0) ? 1 : 0;
-					
-					//$display("**********************zero=%d  add=%b    %d+%d", zero, result, operand0, operand1);
-				end
-			4'b1100: // Signed subtract
-				begin
-					result 		= operand0 - operand1;
-					
-					// See page 226 in Computer Organization and Design
-					if ((operand0 >= 0 && operand1 < 0 && result < 0) ||
-						(operand0 < 0 && operand1 >= 0 && result >= 0)) begin
-						overflow = 1;
-					end else begin
-						overflow = 0;
-					end
-					
-					zero		= (result == 0) ? 1 : 0;
-					
-					//$display("**********************zero=%d        subtract=%b    %d-%d", zero, result, operand0, operand1);
-				end
 			default:
 				begin
 					zero 		= 0;
