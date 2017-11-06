@@ -42,9 +42,9 @@ module register_file
 	//--------------------------
 	// < Enter Input Ports  >
 	input					clk;
-    input 		[4:0]		raddr0;
-	input 		[4:0]		raddr1;
-	input 		[4:0]		waddr;
+    input 		[3:0]		raddr0;
+	input 		[3:0]		raddr1;
+	input 		[3:0]		waddr;
 	input		[31:0]		wdata;
 	input 					wren;
 	
